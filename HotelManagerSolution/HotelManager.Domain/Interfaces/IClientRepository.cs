@@ -1,0 +1,16 @@
+﻿using HotelManager.Domain.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace HotelManager.Domain.Interfaces
+{
+    public interface IClientRepository
+    {
+        Task<Client?> GetByIdAsync(int id);
+        Task<IEnumerable<Client>> GetAllAsync();
+        Task<Client> AddAsync(Client client);
+        Task UpdateAsync(Client client);
+        Task DeleteAsync(int id);
+        Task<Client?> GetByEmailAsync(string email);
+    }
+}

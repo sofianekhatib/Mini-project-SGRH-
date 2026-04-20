@@ -1,0 +1,15 @@
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.AssemblyInfo.cs
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\bin\Debug\net10.0\HotelManager.Infrastructure.deps.json
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\bin\Debug\net10.0\HotelManager.Infrastructure.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\bin\Debug\net10.0\HotelManager.Infrastructure.pdb
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\bin\Debug\net10.0\HotelManager.Domain.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\bin\Debug\net10.0\HotelManager.Domain.pdb
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelMan.5576F7CD.Up2Date
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\refint\HotelManager.Infrastructure.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\HotelManager.Infrastructure.pdb
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Infrastructure\obj\Debug\net10.0\ref\HotelManager.Infrastructure.dll

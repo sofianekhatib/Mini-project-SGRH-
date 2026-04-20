@@ -1,0 +1,117 @@
+📦 HotelManagerSolution
+│
+├── 📁 HotelManager.Domain
+│   ├── 📁 Entities
+│   │     ├── Client.cs
+│   │     ├── User.cs
+│   │     ├── Chambre.cs
+│   │     ├── Reservation.cs
+│   │     ├── Facture.cs
+│   │     └── Paiement.cs
+│   │
+│   ├── 📁 Interfaces
+│   │     ├── IClientRepository.cs
+│   │     ├── IUserRepository.cs
+│   │     ├── IReservationRepository.cs
+│   │     ├── IChambreRepository.cs
+│   │     ├── IFactureRepository.cs
+│   │     └── IPaiementRepository.cs
+│   │
+│   └── 📁 Enums
+│         ├── Role.cs
+│         ├── StatutReservation.cs
+│         ├── StatutChambre.cs
+│         └── ModePaiement.cs
+│
+│
+├── 📁 HotelManager.Application
+│   ├── 📁 DTOs
+│   │   ├── 📁 Auth
+│   │   │     ├── LoginDto.cs
+│   │   │     └── AuthResponseDto.cs
+│   │   │
+│   │   ├── 📁 Client
+│   │   │     ├── RegisterClientDto.cs
+│   │   │     └── ClientDto.cs
+│   │   │
+│   │   ├── 📁 Reservation
+│   │   │     ├── CreateReservationDto.cs
+│   │   │     ├── UpdateReservationDto.cs
+│   │   │     └── ReservationDto.cs
+│   │   │
+│   │   ├── 📁 Chambre
+│   │   │     └── ChambreDto.cs
+│   │   │
+│   │   ├── 📁 Facture
+│   │   │     └── FactureDto.cs
+│   │   │
+│   │   └── 📁 Paiement
+│   │         └── PaiementDto.cs
+│   │
+│   ├── 📁 Interfaces
+│   │     ├── IAuthService.cs
+│   │     ├── IClientService.cs
+│   │     ├── IReservationService.cs
+│   │     ├── IChambreService.cs
+│   │     ├── IFactureService.cs
+│   │     ├── IPaiementService.cs
+│   │     └── IUserService.cs
+│   │
+│   ├── 📁 Services
+│   │     ├── AuthService.cs
+│   │     ├── ClientService.cs
+│   │     ├── ReservationService.cs
+│   │     ├── ChambreService.cs
+│   │     ├── FactureService.cs
+│   │     ├── PaiementService.cs
+│   │     └── UserService.cs
+│   │
+│   ├── 📁 Validators (optional)
+│   │     ├── ClientValidator.cs
+│   │     ├── ReservationValidator.cs
+│   │     └── AuthValidator.cs
+│   │
+│   └── 📁 Mappings (optional)
+│         └── MappingProfile.cs
+│
+│
+├── 📁 HotelManager.Infrastructure
+│   ├── 📁 Data
+│   │     └── AppDbContext.cs
+│   │
+│   ├── 📁 Repositories
+│   │     ├── ClientRepository.cs
+│   │     ├── UserRepository.cs
+│   │     ├── ReservationRepository.cs
+│   │     ├── ChambreRepository.cs
+│   │     ├── FactureRepository.cs
+│   │     └── PaiementRepository.cs
+│   │
+│   ├── 📁 Services
+│   │     └── JwtService.cs
+│   │
+│   ├── 📁 Configurations (optional)
+│   │     ├── ClientConfiguration.cs
+│   │     ├── ReservationConfiguration.cs
+│   │     └── ChambreConfiguration.cs
+│   │
+│   └── 📁 Migrations
+│
+│
+└── 📁 HotelManager.API
+    ├── 📁 Controllers
+    │     ├── AuthController.cs
+    │     ├── ClientController.cs
+    │     ├── ReservationController.cs
+    │     ├── ChambreController.cs
+    │     ├── FactureController.cs
+    │     └── PaiementController.cs
+    │
+    ├── 📁 Middleware
+    │     ├── ExceptionMiddleware.cs
+    │     └── JwtMiddleware.cs
+    │
+    ├── 📁 Extensions
+    │     └── ServiceExtensions.cs    │
+    ├── appsettings.json
+    └── Program.cs

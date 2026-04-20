@@ -1,0 +1,168 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.api\\controllers\\chambrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|solutionrelative:hotelmanager.api\\controllers\\chambrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.application\\services\\chambreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|solutionrelative:hotelmanager.application\\services\\chambreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.api\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|solutionrelative:hotelmanager.api\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18B8D335-861C-C1A2-3470-6EF8C536AEAC}|HotelManager.Domain\\HotelManager.Domain.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18B8D335-861C-C1A2-3470-6EF8C536AEAC}|HotelManager.Domain\\HotelManager.Domain.csproj|solutionrelative:hotelmanager.domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|solutionrelative:hotelmanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.application\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|solutionrelative:hotelmanager.application\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.application\\dtos\\clientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|solutionrelative:hotelmanager.application\\dtos\\clientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|solutionrelative:hotelmanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C6B87425-15E3-4423-A62F-46F1A9617108}|HotelManager.API\\HotelManager.API.csproj|solutionrelative:hotelmanager.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChambreService.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\Services\\ChambreService.cs",
+              "RelativeDocumentMoniker": "HotelManager.Application\\Services\\ChambreService.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\Services\\ChambreService.cs",
+              "RelativeToolTip": "HotelManager.Application\\Services\\ChambreService.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T09:22:26.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChambreController.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\ChambreController.cs",
+              "RelativeDocumentMoniker": "HotelManager.API\\Controllers\\ChambreController.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\ChambreController.cs",
+              "RelativeToolTip": "HotelManager.API\\Controllers\\ChambreController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAYwEQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T09:17:40.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminDashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\AdminDashboardController.cs",
+              "RelativeDocumentMoniker": "HotelManager.API\\Controllers\\AdminDashboardController.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\AdminDashboardController.cs",
+              "RelativeToolTip": "HotelManager.API\\Controllers\\AdminDashboardController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T08:00:58.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Domain\\Enums\\Role.cs",
+              "RelativeDocumentMoniker": "HotelManager.Domain\\Enums\\Role.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Domain\\Enums\\Role.cs",
+              "RelativeToolTip": "HotelManager.Domain\\Enums\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T14:32:56.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\DTOs\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "HotelManager.Application\\DTOs\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\DTOs\\RegisterDto.cs",
+              "RelativeToolTip": "HotelManager.Application\\DTOs\\RegisterDto.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAIwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T23:12:55.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "HotelManager.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "HotelManager.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T23:04:30.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClientDto.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\DTOs\\ClientDto.cs",
+              "RelativeDocumentMoniker": "HotelManager.Application\\DTOs\\ClientDto.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\DTOs\\ClientDto.cs",
+              "RelativeToolTip": "HotelManager.Application\\DTOs\\ClientDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T23:01:17.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\appsettings.json",
+              "RelativeDocumentMoniker": "HotelManager.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\appsettings.json",
+              "RelativeToolTip": "HotelManager.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-17T22:36:03.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Program.cs",
+              "RelativeDocumentMoniker": "HotelManager.API\\Program.cs",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.API\\Program.cs",
+              "RelativeToolTip": "HotelManager.API\\Program.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAYwEsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T16:23:33.967Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

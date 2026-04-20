@@ -1,0 +1,45 @@
+1 - Create a blank solution (ex : Client)
+
+2 - Add Layers to the the Solution the layers are :
+      - Client.Domain (Entities + Interfaces) -> type : Class Library
+      - Client.Application (Services) -> type : Class Library
+      - Client.Infrastructure (Data + Repositories) -> type : Class Library
+      - Client.API (Controllers) -> type : ASP.NET Core
+
+3 - What is the Content of each Layer :
+
+Client.Domain
+│
+├── Entities
+│     └── Client.cs
+│
+├── Interfaces
+│     └── IClientRepository.cs
+
+Example : Client.cs
+
+namespace Client.Domain.Entities
+{
+    public class Client
+    {
+        public int Id { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+
+Example : IClientRepository.cs
+
+namespace Blog.Domain.Interfaces
+{
+    public interface IClientRepository
+    {
+        Task<List<Client>> GetClientsAsync();
+        Task<Client> GetClientByIdAsync(int id);
+        Task<Client> CreateAsync(Client client);
+        Task<int> UpdateAsync(int id, Client client);
+        Task<int> DeleteAsync(int id);
+    }
+}

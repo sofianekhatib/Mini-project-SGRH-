@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="HotelManager.API/HotelManager.API.csproj" Id="c6b87425-15e3-4423-a62f-46f1a9617108" />
+  <Project Path="HotelManager.Application/HotelManager.Application.csproj" Id="f55d20d6-096d-4b75-8d7b-dd1db4b6e192" />
+  <Project Path="HotelManager.Domain/HotelManager.Domain.csproj" />
+  <Project Path="HotelManager.Infrastructure/HotelManager.Infrastructure.csproj" Id="eaa890fa-fa41-48e9-826f-185115afddd9" />
+</Solution>
