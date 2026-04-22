@@ -13,3 +13,4 @@ C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\Ho
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Application\obj\Debug\net10.0\refint\HotelManager.Application.dll
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Application\obj\Debug\net10.0\HotelManager.Application.pdb
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Application\obj\Debug\net10.0\ref\HotelManager.Application.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.Application\obj\Debug\net10.0\HotelManager.Application.sourcelink.json

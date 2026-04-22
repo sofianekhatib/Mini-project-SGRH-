@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Chambres() {
     var [chambres, setChambres] = useState([])
@@ -129,36 +130,65 @@ export default function Chambres() {
         }
     };
     return (
-        <div className="p-6 max-w-7xl mx-auto">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M2 4h20" /><path d="M2 12h20" /><path d="M2 20h20" /><path d="M6 4v16" /><path d="M18 4v16" />
-                        </svg>
+        <div className="p-6 max-w-7xl mx-auto relative">
+            {/* Sticky header section */}
+            <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm -mx-6 px-6 py-2 shadow-sm mb-6">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M2 4h20" /><path d="M2 12h20" /><path d="M2 20h20" /><path d="M6 4v16" /><path d="M18 4v16" />
+                            </svg>
+                        </div>
+                        <h2 className="text-2xl font-semibold tracking-tight text-slate-800">Chambres</h2>
                     </div>
-                    <h2 className="text-2xl font-semibold tracking-tight text-slate-800">Chambres</h2>
-                </div>
 
-                <button className="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-xl shadow-sm transition border border-indigo-600 cursor-default">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
-                    Ajouter Chambre
-                </button>
+                    <div className="flex items-center gap-3">
+                        <Link
+                            to="/CreateChambre"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-xl shadow-sm transition border border-indigo-600 cursor-pointer"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Ajouter Chambre
+                        </Link>
+
+                        <Link
+                            to="/AdminDashboard"
+                            className="inline-flex items-center px-4 py-2.5 text-sm font-medium rounded-xl border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition shadow-sm"
+                        >
+                            ← Retour
+                        </Link>
+                    </div>
+                </div>
             </div>
 
+            {/* Error / success messages */}
+            {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                    ⚠️ {error}
+                </div>
+            )}
+            {success && (
+                <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                    ✅ {success}
+                </div>
+            )}
+
+            {/* Table container */}
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-                {error && (
-                    <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
-                        ⚠️ {error}
-                    </div>
-                )}
-                {success && (
-                    <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
-                        ✅ {success}
-                    </div>
-                )}
                 <table className="min-w-full text-sm">
                     <thead className="bg-slate-50/90 border-b border-slate-200">
                         <tr>
@@ -171,9 +201,9 @@ export default function Chambres() {
                             <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Actions</th>
                         </tr>
                     </thead>
-                    {chambres.map((item) => (
-                        <tbody className="divide-y divide-slate-100">
-                            <tr className="hover:bg-slate-50/60 transition">
+                    <tbody className="divide-y divide-slate-100">
+                        {chambres.map((item) => (
+                            <tr key={item.id} className="hover:bg-slate-50/60 transition">
                                 <td className="px-5 py-4 font-mono text-xs text-slate-500">{item.id}</td>
                                 <td className="px-5 py-4 font-medium text-slate-800">{item.numero}</td>
                                 <td className="px-5 py-4 text-slate-700">{item.type}</td>
@@ -203,8 +233,8 @@ export default function Chambres() {
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    ))}
+                        ))}
+                    </tbody>
                 </table>
             </div>
         </div>

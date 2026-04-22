@@ -27,7 +27,7 @@ const AdminDashboard = ({ user, onLogout }) => {
 
     const menuItems = [
         { title: 'Gestion des chambres', description: 'Ajouter, modifier ou supprimer des chambres', icon: Hotel, color: 'from-blue-500 to-blue-600', link: "/Chambres" },
-        { title: 'Gestion des réservations', description: 'Voir toutes les réservations, annuler, modifier', icon: Calendar, color: 'from-green-500 to-green-600' },
+        { title: 'Gestion des réservations', description: 'Voir toutes les réservations, annuler, modifier', icon: Calendar, color: 'from-green-500 to-green-600', link: "/Reservations" },
         { title: 'Gestion des utilisateurs', description: 'Créer des réceptionnistes, gérer les droits', icon: Users, color: 'from-purple-500 to-purple-600' },
         { title: 'Rapports financiers', description: 'Consulter les factures et paiements', icon: BarChart3, color: 'from-yellow-500 to-yellow-600' },
     ];
@@ -73,9 +73,7 @@ const AdminDashboard = ({ user, onLogout }) => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* 4 cartes statistiques écrites manuellement (sans .map) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                    {/* Carte Chambres */}
                     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                         <div className="p-6">
                             <div className="flex items-center justify-between">
@@ -94,8 +92,6 @@ const AdminDashboard = ({ user, onLogout }) => {
                             </span>
                         </div>
                     </div>
-
-                    {/* Carte Clients */}
                     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                         <div className="p-6">
                             <div className="flex items-center justify-between">
@@ -114,8 +110,6 @@ const AdminDashboard = ({ user, onLogout }) => {
                             </span>
                         </div>
                     </div>
-
-                    {/* Carte Réservations */}
                     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                         <div className="p-6">
                             <div className="flex items-center justify-between">
@@ -134,8 +128,6 @@ const AdminDashboard = ({ user, onLogout }) => {
                             </span>
                         </div>
                     </div>
-
-                    {/* Carte Revenus */}
                     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                         <div className="p-6">
                             <div className="flex items-center justify-between">
@@ -155,8 +147,6 @@ const AdminDashboard = ({ user, onLogout }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* Grille des fonctionnalités (avec map, c'est correct) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {menuItems.map((item, idx) => {
                         const Icon = item.icon;

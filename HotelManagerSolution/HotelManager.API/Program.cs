@@ -26,7 +26,7 @@ builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<IFactureRepository, FactureRepository>();
 builder.Services.AddScoped<IPaiementRepository, PaiementRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+                                                            
 // Services
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IChambreService, ChambreService>();

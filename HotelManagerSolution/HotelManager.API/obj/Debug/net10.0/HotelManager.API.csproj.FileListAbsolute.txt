@@ -85,3 +85,4 @@ C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\Ho
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.genruntimeconfig.cache
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\ref\HotelManager.API.dll
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.sourcelink.json

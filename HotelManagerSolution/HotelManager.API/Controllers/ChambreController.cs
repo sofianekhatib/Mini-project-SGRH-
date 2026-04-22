@@ -19,10 +19,12 @@ namespace HotelManager.API.Controllers
             _chambreService = chambreService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll() =>
             Ok(await _chambreService.GetAllChambresAsync());
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -31,6 +33,7 @@ namespace HotelManager.API.Controllers
             return Ok(chambre);
         }
 
+        [AllowAnonymous]
         [HttpGet("disponibles")]
         public async Task<IActionResult> GetDisponibles(DateTime debut, DateTime fin) =>
             Ok(await _chambreService.GetChambresDisponiblesAsync(debut, fin));
