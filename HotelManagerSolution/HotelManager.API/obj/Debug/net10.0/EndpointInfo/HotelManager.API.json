@@ -359,6 +359,49 @@
         }
       }
     },
+    "/api/Contact": {
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Facture": {
+      "get": {
+        "tags": [
+          "Facture"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Facture/reservation/{reservationId}": {
       "get": {
         "tags": [
@@ -596,6 +639,28 @@
         },
         "additionalProperties": false
       },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomComplet": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateReservationDto": {
         "type": "object",
         "properties": {
@@ -700,6 +765,9 @@
     },
     {
       "name": "Client"
+    },
+    {
+      "name": "Contact"
     },
     {
       "name": "Facture"

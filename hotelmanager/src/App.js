@@ -6,10 +6,11 @@ import Login from './Pages/Login';
 import AdminDashboard from './Pages/AdminDashboard';
 import ClientDashboard from './Pages/ClientDashboard';
 import Chambres from './Pages/Chambres';
-import CreateChambre from './Pages/CreateChambre';
 import Services from './Pages/Services';
 import Reservations from './Pages/Reservations';
 import Contact from './Pages/Contact';
+import GestionUtilisateurs from './Pages/GestionUtilisateurs';
+import RapportsFinanciers from './Pages/RapportFinanciers';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,7 +48,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/CreateChambre" element={<CreateChambre />} />
         <Route
           path="/AdminDashboard"
           element={
@@ -57,10 +57,13 @@ function App() {
               <Navigate to="/" />
             )
           }
-        />        <Route path="/register" element={<Register />} />
+        />        
+        <Route path="/register" element={<Register />} />
         <Route path="/Chambres" element={<Chambres />} />
+        <Route path="/RapportsFinanciers" element={<RapportsFinanciers />} />
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/Services" element={<Services />} />
+        <Route path="/GestionUtilisateurs" element={<GestionUtilisateurs/>}></Route>
         <Route path="/Contact" element={<Contact />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route

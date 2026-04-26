@@ -1,124 +1,137 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-    LogOut,
-    Calendar,
-    PlusCircle,
-    FileText,
-    User,
-    CreditCard,
-    Bell,
-    Home
-} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { LogOut, Calendar, Home, CreditCard, Bell } from 'lucide-react';
 
 const ClientDashboard = ({ user, onLogout }) => {
     const navigate = useNavigate();
+    const [stats, setStats] = useState({
+        activeReservations: 0,
+        pastReservations: 0,
+        loyaltyPoints: 0,
+        notifications: 0
+    });
+    const [loading, setLoading] = useState(true);
 
     const handleLogout = () => {
         onLogout();
         navigate('/');
     };
 
-    // Données simulées pour les cartes statistiques
-    const stats = [
-        { label: 'Réservations actives', value: '2', icon: Calendar, color: 'bg-blue-500' },
-        { label: 'Séjours passés', value: '4', icon: Home, color: 'bg-green-500' },
-        { label: 'Points fidélité', value: '850', icon: CreditCard, color: 'bg-purple-500' },
-        { label: 'Notifications', value: '3', icon: Bell, color: 'bg-yellow-500' },
+    useEffect(() => {
+        // Simulate fetching client stats (replace with real API call)
+        const fetchClientStats = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                // Replace with your actual endpoint
+                const res = await fetch('https://localhost:7188/api/ClientDashboard/stats', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    setStats(data);
+                } else {
+                    // Fallback mock data for demo
+                    setStats({ activeReservations: 2, pastReservations: 3, loyaltyPoints: 850, notifications: 1 });
+                }
+            } catch (err) {
+                setStats({ activeReservations: 2, pastReservations: 3, loyaltyPoints: 850, notifications: 1 });
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchClientStats();
+    }, []);
+
+    const statCards = [
+        { label: 'Réservations actives', value: stats.activeReservations, icon: Calendar },
+        { label: 'Séjours passés', value: stats.pastReservations, icon: Home },
+        { label: 'Points fidélité', value: stats.loyaltyPoints, icon: CreditCard },
+        { label: 'Notifications', value: stats.notifications, icon: Bell },
     ];
 
-    const menuItems = [
-        { title: 'Mes réservations', description: 'Consultez et gérez vos réservations en cours', icon: Calendar, color: 'from-blue-500 to-blue-600' },
-        { title: 'Nouvelle réservation', description: 'Réservez une chambre selon vos dates', icon: PlusCircle, color: 'from-green-500 to-green-600' },
-        { title: 'Mes factures', description: 'Historique des paiements et factures', icon: FileText, color: 'from-purple-500 to-purple-600' },
-        { title: 'Mon profil', description: 'Modifiez vos informations personnelles', icon: User, color: 'from-yellow-500 to-yellow-600' },
-    ];
+    if (loading) return <div className="flex justify-center items-center h-screen text-slate-600">Chargement...</div>;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-            {/* Header avec dégradé */}
-            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <div className="flex justify-between items-center">
+        <div className="min-h-screen bg-slate-50">
+            {/* Header */}
+            <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-16">
                         <div>
-                            <h1 className="text-3xl font-bold tracking-tight">Mon espace client</h1>
-                            <p className="mt-1 text-emerald-100">
-                                Bonjour, <span className="font-semibold">{user?.username}</span>
+                            <h1 className="text-xl font-semibold text-slate-800">Mon espace client</h1>
+                            <p className="text-sm text-slate-500">
+                                Bonjour, <span className="font-medium text-slate-700">{user?.username}</span>
                             </p>
                         </div>
                         <button
                             onClick={handleLogout}
-                            className="flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-200 px-4 py-2 rounded-lg font-medium"
+                            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition text-sm font-medium"
                         >
-                            <LogOut size={20} />
+                            <LogOut size={18} />
                             Déconnexion
                         </button>
                     </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Contenu principal */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Cartes statistiques */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                    {stats.map((stat, idx) => {
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {/* Stats cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+                    {statCards.map((stat, idx) => {
                         const Icon = stat.icon;
                         return (
-                            <div
-                                key={idx}
-                                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
-                            >
-                                <div className="p-6">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
-                                            <p className="text-3xl font-bold text-gray-800 mt-1">{stat.value}</p>
-                                        </div>
-                                        <div className={`${stat.color} p-3 rounded-full text-white shadow-md`}>
+                            <div key={idx} className="bg-white border border-slate-200 rounded-lg shadow-sm p-5">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-slate-500 text-sm uppercase tracking-wide">{stat.label}</p>
+                                        <p className="text-2xl font-semibold text-slate-800 mt-1">{stat.value}</p>
+                                    </div>
+                                    <div className="bg-slate-100 p-2 rounded-full text-slate-600">
+                                        <Icon size={22} />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Quick actions */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        { title: 'Mes réservations', description: 'Consultez et gérez vos réservations en cours', link: '/mes-reservations', icon: Calendar },
+                        { title: 'Nouvelle réservation', description: 'Réservez une chambre selon vos dates', link: '/nouvelle-reservation', icon: Calendar },
+                        { title: 'Mes factures', description: 'Historique des paiements et factures', link: '/mes-factures', icon: CreditCard },
+                        { title: 'Mon profil', description: 'Modifiez vos informations personnelles', link: '/mon-profil', icon: Bell },
+                    ].map((item, idx) => {
+                        const Icon = item.icon;
+                        return (
+                            <div key={idx} className="group bg-white border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+                                <div className="p-5">
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-slate-100 p-2 rounded-md text-slate-600 group-hover:bg-slate-200 transition">
                                             <Icon size={24} />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-lg font-medium text-slate-800">{item.title}</h3>
+                                            <p className="text-slate-500 text-sm mt-1">{item.description}</p>
+                                            <Link to={item.link} className="inline-flex items-center text-slate-600 hover:text-slate-900 text-sm font-medium mt-3 group-hover:underline">
+                                                Accéder
+                                                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
-                                    <span className="text-xs text-gray-500">Mise à jour récente</span>
-                                </div>
                             </div>
                         );
                     })}
                 </div>
 
-                {/* Grille des fonctionnalités */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {menuItems.map((item, idx) => {
-                        const Icon = item.icon;
-                        return (
-                            <div
-                                key={idx}
-                                className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1"
-                            >
-                                <div className={`bg-gradient-to-r ${item.color} p-4 text-white`}>
-                                    <Icon size={32} className="group-hover:scale-110 transition-transform duration-200" />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
-                                    <p className="text-gray-600 mb-4">{item.description}</p>
-                                    <button className="text-emerald-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                                        Accéder
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* Pied de page */}
-                <div className="mt-12 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-                    © 2025 HotelManager - Gérez vos séjours en toute simplicité
-                </div>
-            </div>
+                <footer className="mt-12 pt-6 border-t border-slate-200 text-center text-sm text-slate-400">
+                    © 2025 HotelManager – Tous droits réservés
+                </footer>
+            </main>
         </div>
     );
 };

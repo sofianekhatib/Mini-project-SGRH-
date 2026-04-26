@@ -6,17 +6,35 @@
       - Client.Infrastructure (Data + Repositories) -> type : Class Library
       - Client.API (Controllers) -> type : ASP.NET Core
 
-3 - What is the Content of each Layer :
+Client Solution Structure (Clean Architecture)
 
-Client.Domain
-│
+Client.Domain (Class Library)
 ├── Entities
-│     └── Client.cs
-│
-├── Interfaces
-│     └── IClientRepository.cs
+│   └── Client.cs
+└── Interfaces
+    └── IClientRepository.cs
 
-Example : Client.cs
+Client.Application (Class Library)
+└── Services
+    ├── IClientService.cs
+    └── ClientService.cs
+
+Client.Infrastructure (Class Library)
+├── Data
+│   └── ClientDbContext.cs
+└── Repositories
+    └── ClientRepository.cs
+
+Client.API (ASP.NET Core)
+├── Controllers
+│   └── ClientController.cs
+├── Program.cs
+└── appsettings.json
+
+================================================================================
+File: Client.Domain/Entities/Client.cs
+================================================================================
+using System;
 
 namespace Client.Domain.Entities
 {
@@ -30,9 +48,14 @@ namespace Client.Domain.Entities
     }
 }
 
-Example : IClientRepository.cs
+================================================================================
+File: Client.Domain/Interfaces/IClientRepository.cs
+================================================================================
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Client.Domain.Entities;
 
-namespace Blog.Domain.Interfaces
+namespace Client.Domain.Interfaces
 {
     public interface IClientRepository
     {
@@ -42,4 +65,269 @@ namespace Blog.Domain.Interfaces
         Task<int> UpdateAsync(int id, Client client);
         Task<int> DeleteAsync(int id);
     }
+}
+
+================================================================================
+File: Client.Application/Services/IClientService.cs
+================================================================================
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Client.Domain.Entities;
+
+namespace Client.Application.Services
+{
+    public interface IClientService
+    {
+        Task<List<Client>> GetClientsAsync();
+        Task<Client> GetClientByIdAsync(int id);
+        Task<Client> CreateAsync(Client client);
+        Task<int> UpdateAsync(int id, Client client);
+        Task<int> DeleteAsync(int id);
+    }
+}
+
+================================================================================
+File: Client.Application/Services/ClientService.cs
+================================================================================
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Client.Domain.Entities;
+using Client.Domain.Interfaces;
+
+namespace Client.Application.Services
+{
+    public class ClientService : IClientService
+    {
+        private readonly IClientRepository _clientRepository;
+
+        public ClientService(IClientRepository clientRepository)
+        {
+            _clientRepository = clientRepository;
+        }
+
+        public async Task<Client> CreateAsync(Client client)
+        {
+            return await _clientRepository.CreateAsync(client);
+        }
+
+        public async Task<int> DeleteAsync(int id)
+        {
+            return await _clientRepository.DeleteAsync(id);
+        }
+
+        public async Task<Client> GetClientByIdAsync(int id)
+        {
+            return await _clientRepository.GetClientByIdAsync(id);
+        }
+
+        public async Task<List<Client>> GetClientsAsync()
+        {
+            return await _clientRepository.GetClientsAsync();
+        }
+
+        public async Task<int> UpdateAsync(int id, Client client)
+        {
+            return await _clientRepository.UpdateAsync(id, client);
+        }
+    }
+}
+
+================================================================================
+File: Client.Infrastructure/Data/ClientDbContext.cs
+================================================================================
+using Microsoft.EntityFrameworkCore;
+using Client.Domain.Entities;
+
+namespace Client.Infrastructure.Data
+{
+    public class ClientDbContext : DbContext
+    {
+        public ClientDbContext(DbContextOptions<ClientDbContext> options) : base(options) { }
+
+        public DbSet<Client> Clients { get; set; }
+    }
+}
+
+================================================================================
+File: Client.Infrastructure/Repositories/ClientRepository.cs
+================================================================================
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Client.Domain.Entities;
+using Client.Domain.Interfaces;
+using Client.Infrastructure.Data;
+
+namespace Client.Infrastructure.Repositories
+{
+    public class ClientRepository : IClientRepository
+    {
+        private readonly ClientDbContext _context;
+
+        public ClientRepository(ClientDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Client> CreateAsync(Client client)
+        {
+            await _context.Clients.AddAsync(client);
+            await _context.SaveChangesAsync();
+            return client;
+        }
+
+        public async Task<int> DeleteAsync(int id)
+        {
+            var client = await _context.Clients.FindAsync(id);
+            if (client != null)
+            {
+                _context.Clients.Remove(client);
+                await _context.SaveChangesAsync();
+                return 1;
+            }
+            return 0;
+        }
+
+        public async Task<Client> GetClientByIdAsync(int id)
+        {
+            return await _context.Clients.FindAsync(id);
+        }
+
+        public async Task<List<Client>> GetClientsAsync()
+        {
+            return await _context.Clients.ToListAsync();
+        }
+
+        public async Task<int> UpdateAsync(int id, Client client)
+        {
+            var existing = await _context.Clients.FindAsync(id);
+            if (existing != null)
+            {
+                existing.Nom = client.Nom;
+                existing.Prenom = client.Prenom;
+                existing.Email = client.Email;
+                existing.Password = client.Password;
+                await _context.SaveChangesAsync();
+                return 1;
+            }
+            return 0;
+        }
+    }
+}
+
+================================================================================
+File: Client.API/Controllers/ClientController.cs
+================================================================================
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Client.Domain.Entities;
+using Client.Application.Services;
+
+namespace Client.API.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ClientController : ControllerBase
+    {
+        private readonly IClientService _clientService;
+
+        public ClientController(IClientService clientService)
+        {
+            _clientService = clientService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetClients()
+        {
+            var clients = await _clientService.GetClientsAsync();
+            return Ok(clients);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetClientById(int id)
+        {
+            var client = await _clientService.GetClientByIdAsync(id);
+            if (client == null)
+                return NotFound();
+            return Ok(client);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateClient([FromBody] Client client)
+        {
+            var created = await _clientService.CreateAsync(client);
+            return CreatedAtAction(nameof(GetClientById), new { id = created.Id }, created);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateClient(int id, [FromBody] Client client)
+        {
+            var result = await _clientService.UpdateAsync(id, client);
+            if (result == 0)
+                return NotFound();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteClient(int id)
+        {
+            var result = await _clientService.DeleteAsync(id);
+            if (result == 0)
+                return NotFound();
+            return NoContent();
+        }
+    }
+}
+
+================================================================================
+File: Client.API/Program.cs
+================================================================================
+using Microsoft.EntityFrameworkCore;
+using Client.Infrastructure.Data;
+using Client.Infrastructure.Repositories;
+using Client.Domain.Interfaces;
+using Client.Application.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ClientDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IClientService, ClientService>();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
+
+================================================================================
+File: Client.API/appsettings.json
+================================================================================
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server=localhost;database=users;user=root;password="
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
 }

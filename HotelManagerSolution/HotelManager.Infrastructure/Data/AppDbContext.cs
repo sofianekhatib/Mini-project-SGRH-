@@ -15,6 +15,7 @@ namespace HotelManager.Infrastructure.Data
         public DbSet<Facture> Factures { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

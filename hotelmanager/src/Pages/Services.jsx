@@ -27,7 +27,6 @@ const Services = () => {
                         </div>
                         <div className="hidden md:flex items-center gap-6">
                             <a href="/" className="text-gray-700 hover:text-indigo-600 transition">Accueil</a>
-                            <a href="/chambres" className="text-gray-700 hover:text-indigo-600 transition">Chambres</a>
                             <a href="/services" className="text-gray-700 hover:text-indigo-600 transition">Services</a>
                             <a href="/contact" className="text-gray-700 hover:text-indigo-600 transition">Contact</a>
                         </div>

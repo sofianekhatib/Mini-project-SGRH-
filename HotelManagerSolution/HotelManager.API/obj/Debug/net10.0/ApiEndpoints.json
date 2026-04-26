@@ -221,6 +221,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HotelManager.API.Controllers.ContactController",
+    "Method": "Post",
+    "RelativePath": "api/Contact",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contact",
+        "Type": "HotelManager.Domain.Entities.Contact",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.FactureController",
+    "Method": "GetAllFactures",
+    "RelativePath": "api/Facture",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HotelManager.API.Controllers.FactureController",
     "Method": "Pay",
     "RelativePath": "api/Facture/{factureId}/pay",
