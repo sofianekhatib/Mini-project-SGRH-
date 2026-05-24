@@ -10,16 +10,13 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Repositories
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IChambreRepository, ChambreRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
@@ -27,15 +24,17 @@ builder.Services.AddScoped<IFactureRepository, FactureRepository>();
 builder.Services.AddScoped<IPaiementRepository, PaiementRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
                                                             
-// Services
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IChambreService, ChambreService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IFactureService, FactureService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-// JWT Authentication
-var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrEmpty(jwtKey))
+    throw new InvalidOperationException("JWT Key is not configured. Please set 'Jwt:Key' in appsettings.json");
+
+var key = Encoding.ASCII.GetBytes(jwtKey);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -59,17 +58,22 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:3000")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/error");
 }
 
 app.UseHttpsRedirection();

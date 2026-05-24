@@ -1,0 +1,69 @@
+# Quick Fix Summary - EF Migrations
+
+## ❌ Problem
+```
+PM> dotnet ef migrations add InitialCreate
+Build started...
+Build failed. Use dotnet build to see the errors.
+```
+
+## ✅ Root Cause
+Missing NuGet packages in `HotelManager.Infrastructure.csproj`:
+- Missing: `Microsoft.EntityFrameworkCore.Tools`
+- Missing: `Microsoft.EntityFrameworkCore.SqlServer`
+
+## ✅ Solution Applied
+Updated `HotelManager.Infrastructure/HotelManager.Infrastructure.csproj`:
+
+```xml
+<ItemGroup>
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.6" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.6" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.6" />
+</ItemGroup>
+```
+
+## ✅ What This Fixes
+- ✅ Enables SQL Server as the database provider
+- ✅ Installs EF CLI tools (migrations, database update)
+- ✅ Build will now succeed
+- ✅ Migration commands will work
+
+## 🚀 Next Steps
+
+### Step 1: Open Package Manager Console
+**Tools** → **NuGet Package Manager** → **Package Manager Console**
+
+### Step 2: Create Initial Migration
+```powershell
+dotnet ef migrations add InitialCreate
+```
+
+### Step 3: Update Database
+```powershell
+dotnet ef database update
+```
+
+### Step 4: Verify (in SQL Server Management Studio)
+- Connect to: `SOFIANELAP\SQLEXPRESS`
+- Database: `HotelManagerDB`
+- Should see 7 tables: Users, Clients, Chambres, Reservations, Factures, Paiements, Contacts
+
+## 📝 Files Modified
+- ✅ `HotelManager.Infrastructure/HotelManager.Infrastructure.csproj` (added 2 packages)
+
+## ℹ️ Why This Matters
+Entity Framework Core needs:
+1. **Core**: `Microsoft.EntityFrameworkCore` - Base EF functionality
+2. **Provider**: `Microsoft.EntityFrameworkCore.SqlServer` - SQL Server support
+3. **Tools**: `Microsoft.EntityFrameworkCore.Tools` - Migration CLI commands
+
+All three are required to:
+- Create migrations
+- Update database schema
+- Generate migration scripts
+
+---
+
+**Build Status:** ✅ Successful
+**Ready to migrate:** ✅ Yes

@@ -47,5 +47,8 @@ namespace HotelManager.Infrastructure.Repositories
 
         public async Task<Client?> GetByEmailAsync(string email) =>
             await _context.Clients.FirstOrDefaultAsync(c => c.Email == email);
+
+        public async Task<Client?> GetByUserIdAsync(int userId) =>
+            await _context.Clients.FirstOrDefaultAsync(c => c.UserId == userId);
     }
 }

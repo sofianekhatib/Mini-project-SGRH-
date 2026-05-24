@@ -19,15 +19,22 @@ namespace HotelManager.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            var token = await _authService.AuthenticateAsync(loginDto);
-            if (token == null)
-                return Unauthorized("Nom d'utilisateur ou mot de passe incorrect");
-            return Ok(new { Token = token });
+            try
+            {
+                var token = await _authService.AuthenticateAsync(loginDto);
+                if (token == null)
+                    return Unauthorized("Nom d'utilisateur ou mot de passe incorrect");
+                return Ok(new { Token = token });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
-            var result = await _authService.RegisterAsync(dto.Username, dto.Password, dto.Email, dto.Role);
+            var result = await _authService.RegisterAsync(dto);
             if (!result)
                 return BadRequest("Nom d'utilisateur déjà pris");
             return Ok("Utilisateur créé");

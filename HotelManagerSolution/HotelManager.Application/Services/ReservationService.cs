@@ -7,7 +7,6 @@ using HotelManager.Application.Interfaces;
 using HotelManager.Domain.Entities;
 using HotelManager.Domain.Enums;
 using HotelManager.Domain.Interfaces;
-
 namespace HotelManager.Application.Services
 {
     public class ReservationService : IReservationService
@@ -44,7 +43,6 @@ namespace HotelManager.Application.Services
 
         public async Task<ReservationDto> CreateReservationAsync(CreateReservationDto dto)
         {
-            // Vérifier disponibilité
             var chambre = await _chambreRepository.GetByIdAsync(dto.ChambreId);
             if (chambre == null) throw new Exception("Chambre inexistante");
             var disponibles = await _chambreRepository.GetDisponiblesAsync(dto.DateDebut, dto.DateFin);
@@ -62,7 +60,6 @@ namespace HotelManager.Application.Services
             };
             var created = await _reservationRepository.AddAsync(reservation);
 
-            // Créer la facture associée
             var nbNuits = (dto.DateFin - dto.DateDebut).Days;
             var montant = nbNuits * chambre.PrixParNuit;
             var facture = new Facture
@@ -93,25 +90,18 @@ namespace HotelManager.Application.Services
 
         private async Task<IEnumerable<ReservationDto>> MapToDto(IEnumerable<Reservation> reservations)
         {
-            var dtos = new List<ReservationDto>();
-            foreach (var r in reservations)
+            return reservations.Select(r => new ReservationDto
             {
-                var client = await _clientRepository.GetByIdAsync(r.ClientId);
-                var chambre = await _chambreRepository.GetByIdAsync(r.ChambreId);
-                dtos.Add(new ReservationDto
-                {
-                    Id = r.Id,
-                    DateDebut = r.DateDebut,
-                    DateFin = r.DateFin,
-                    Statut = r.Statut,
-                    DateReservation = r.DateReservation,
-                    ClientId = r.ClientId,
-                    ClientNomComplet = client != null ? $"{client.Prenom} {client.Nom}" : "",
-                    ChambreId = r.ChambreId,
-                    ChambreNumero = chambre?.Numero ?? ""
-                });
-            }
-            return dtos;
+                Id = r.Id,
+                DateDebut = r.DateDebut,
+                DateFin = r.DateFin,
+                Statut = r.Statut,
+                DateReservation = r.DateReservation,
+                ClientId = r.ClientId,
+                ClientNomComplet = r.Client != null ? $"{r.Client.Prenom} {r.Client.Nom}".Trim() : string.Empty,
+                ChambreId = r.ChambreId,
+                ChambreNumero = r.Chambre?.Numero ?? string.Empty
+            }).ToList();
         }
     }
 }

@@ -11,36 +11,55 @@ using HotelManager.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using BCrypt.Net;
+using System.Collections.Generic;
 
 namespace HotelManager.Application.Services
 {
     public class AuthService : IAuthService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IClientRepository _clientRepository;
         private readonly IConfiguration _configuration;
 
-        public AuthService(IUserRepository userRepository, IConfiguration configuration)
+        public AuthService(IUserRepository userRepository, IClientRepository clientRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _clientRepository = clientRepository;
             _configuration = configuration;
         }
 
-        public async Task<string> AuthenticateAsync(LoginDto loginDto)
+        public async Task<string?> AuthenticateAsync(LoginDto loginDto)
         {
             var user = await _userRepository.GetByUsernameAsync(loginDto.NomUtilisateur);
             if (user == null || !VerifyPassword(loginDto.MotDePasse, user.MotDePasseHash))
                 return null;
 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.NomUtilisateur),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
+                new Claim("userId", user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email)
+            };
+
+            if (user.Role == Role.Client)
+            {
+                var client = await _clientRepository.GetByUserIdAsync(user.Id);
+                if (client != null)
+                {
+                    claims.Add(new Claim("clientId", client.Id.ToString()));
+                }
+            }
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+                throw new InvalidOperationException("JWT Key is not configured. Please set 'Jwt:Key' in appsettings.json");
+
+            var key = Encoding.ASCII.GetBytes(jwtKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, user.NomUtilisateur),
-                    new Claim(ClaimTypes.Role, user.Role.ToString()),
-                    new Claim("userId", user.Id.ToString())
-                }),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(8),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -48,26 +67,55 @@ namespace HotelManager.Application.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public async Task<bool> RegisterAsync(string username, string password, string email, string role)
+        public async Task<bool> RegisterAsync(RegisterDto dto)
         {
-            if (await _userRepository.GetByUsernameAsync(username) != null)
+            if (await _userRepository.GetByUsernameAsync(dto.Username) != null)
                 return false;
 
             var user = new User
             {
-                NomUtilisateur = username,
-                MotDePasseHash = HashPassword(password),
-                Email = email,
-                Role = Enum.Parse<Role>(role, true)
+                NomUtilisateur = dto.Username,
+                MotDePasseHash = HashPassword(dto.Password),
+                Email = dto.Email,
+                Role = Enum.Parse<Role>(dto.Role, true)
             };
             await _userRepository.AddAsync(user);
+
+            if (dto.Role == "Client")
+            {
+                var client = new Client
+                {
+                    Nom = dto.Nom,
+                    Prenom = dto.Prenom,
+                    Email = dto.Email,
+                    Telephone = dto.Telephone,
+                    Adresse = dto.Adresse,
+                    UserId = user.Id
+                };
+                await _clientRepository.AddAsync(client);
+            }
             return true;
         }
 
-        private string HashPassword(string password) =>
-            BCrypt.Net.BCrypt.HashPassword(password);
+        private string HashPassword(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("Password cannot be null or empty", nameof(password));
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
 
-        private bool VerifyPassword(string password, string hash) =>
-            BCrypt.Net.BCrypt.Verify(password, hash);
+        private bool VerifyPassword(string password, string hash)
+        {
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(hash))
+                return false;
+            try
+            {
+                return BCrypt.Net.BCrypt.Verify(password, hash);
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

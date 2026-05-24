@@ -1,7 +1,5 @@
 ﻿using HotelManager.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
-using System.Text.RegularExpressions;
 
 namespace HotelManager.Infrastructure.Data
 {
@@ -19,12 +17,23 @@ namespace HotelManager.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Relations et contraintes
+            modelBuilder.Entity<Chambre>()
+                .Property(c => c.PrixParNuit)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Facture>()
+                .Property(f => f.MontantTotal)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Paiement>()
+                .Property(p => p.Montant)
+                .HasPrecision(18, 2);
+
             modelBuilder.Entity<Reservation>()
-                .HasOne(r => r.Client)
-                .WithMany(c => c.Reservations)
-                .HasForeignKey(r => r.ClientId)
-                .OnDelete(DeleteBehavior.Restrict);
+         .HasOne(r => r.Client)
+         .WithMany(c => c.Reservations)
+         .HasForeignKey(r => r.ClientId)
+         .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.Chambre)
@@ -43,7 +52,6 @@ namespace HotelManager.Infrastructure.Data
                 .WithMany(f => f.Paiements)
                 .HasForeignKey(p => p.FactureId);
 
-            // Index unique sur email client
             modelBuilder.Entity<Client>()
                 .HasIndex(c => c.Email)
                 .IsUnique();

@@ -1,0 +1,45 @@
+# ✅ FIXED: EF Tools Version Mismatch
+
+## What Was Wrong
+```
+The Entity Framework tools version '10.0.5' is older than that of the runtime '10.0.6'.
+System.MissingMethodException: Method not found...
+```
+
+## Root Cause
+Your global `dotnet-ef` tool (10.0.5) was **older** than your project's EF runtime (10.0.6).
+
+## ✅ Fixed
+- ✅ Updated global `dotnet-ef`: 10.0.5 → 10.0.8
+- ✅ Updated `Microsoft.AspNetCore.OpenApi`: 10.0.5 → 10.0.6
+- ✅ Verified all EF packages are in sync
+
+## 🚀 Now Run This
+
+### Open Package Manager Console
+**Tools** → **NuGet Package Manager** → **Package Manager Console**
+
+### Command 1: Create Migration
+```powershell
+Add-Migration InitialCreate
+```
+
+### Command 2: Update Database
+```powershell
+Update-Database
+```
+
+## ✅ Verify Success
+In SQL Server Management Studio:
+- Connect to: `SOFIANELAP\SQLEXPRESS`
+- Check `HotelManagerDB`
+- Should have 7 new tables
+
+## 📄 Detailed Guide
+See: `EF_TOOLS_VERSION_FIX.md`
+
+---
+
+**Status:** ✅ Ready to create migrations
+**Build:** ✅ Successful
+**Next:** Run migration commands in Package Manager Console

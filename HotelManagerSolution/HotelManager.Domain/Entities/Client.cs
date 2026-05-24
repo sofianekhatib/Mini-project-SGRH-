@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace HotelManager.Domain.Entities
+﻿namespace HotelManager.Domain.Entities
 {
     public class Client
     {
@@ -11,7 +9,9 @@ namespace HotelManager.Domain.Entities
         public string Telephone { get; set; } = string.Empty;
         public string Adresse { get; set; } = string.Empty;
 
-        // Navigation
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
+
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './Pages/Home';
-import Register from './Pages/Register';
-import Login from './Pages/Login';
-import AdminDashboard from './Pages/AdminDashboard';
-import ClientDashboard from './Pages/ClientDashboard';
-import Chambres from './Pages/Chambres';
-import Services from './Pages/Services';
-import Reservations from './Pages/Reservations';
-import Contact from './Pages/Contact';
-import GestionUtilisateurs from './Pages/GestionUtilisateurs';
-import RapportsFinanciers from './Pages/RapportFinanciers';
+import Home from './Pages/System/Home';
+import Register from './Pages/System/Register';
+import Login from './Pages/System/Login';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import ClientDashboard from './Pages/Client/ClientDashboard';
+import Services from './Pages/System/Services';
+import Reservations from './Pages/System/Reservations';
+import Contact from './Pages/System/Contact';
+import GestionUtilisateurs from './Pages/Admin/GestionUtilisateurs';
+import RapportsFinanciers from './Pages/Admin/RapportFinanciers';
+import ReservationsClient from './Pages/Client/ReservationsClient';
+import Profile from './Pages/Client/Profile';
+import DemandeReservation from './Pages/Client/DemandeReservation';
+import Factures from './Pages/Client/Factures';
+import SystemConfiguration from './Pages/Admin/SystemConfiguration';
+import CheckIn from './Pages/Receptionist/CheckIn'
+import CheckOut from './Pages/Receptionist/CheckOut'
+import ClientManagement from './Pages/Receptionist/ClientManagement'
+import GenerateInvoice from './Pages/Receptionist/GenerateInvoice'
+import ReceptionistDashboard from './Pages/Receptionist/ReceptionistDashboard'
+import ReceptionistReservations from './Pages/Receptionist/ReceptionistReservations'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,13 +69,24 @@ function App() {
           }
         />        
         <Route path="/register" element={<Register />} />
-        <Route path="/Chambres" element={<Chambres />} />
+        <Route path="/SystemConfiguration" element={<SystemConfiguration />} />
+        <Route path="/Profile" element={<Profile/>}/>
         <Route path="/RapportsFinanciers" element={<RapportsFinanciers />} />
+        <Route path="/DemandeReservation" element={<DemandeReservation />} />
+        <Route path="/Factures" element={<Factures />} />
         <Route path="/Reservations" element={<Reservations />} />
+        <Route path="/ReservationsClient" element={<ReservationsClient/>} />
         <Route path="/Services" element={<Services />} />
         <Route path="/GestionUtilisateurs" element={<GestionUtilisateurs/>}></Route>
         <Route path="/Contact" element={<Contact />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/CheckIn" element={<CheckIn />} />
+        <Route path="/CheckOut" element={<CheckOut />} />
+        <Route path="/ClientManagement" element={<ClientManagement />} />
+        <Route path="/GenerateInvoice" element={<GenerateInvoice />} />
+        <Route path="/ReceptionistDashboard" element={<ReceptionistDashboard />} />
+        <Route path="/ReceptionistReservations" element={<ReceptionistReservations />} />
+
         <Route
           path="/admin"
           element={
@@ -86,6 +107,16 @@ function App() {
             )
           }
         />
+        <Route
+    path="/receptionist"
+    element={
+        user && user.role === 'Receptionniste' ? (
+            <ReceptionistDashboard user={user} onLogout={handleLogout} />
+        ) : (
+            <Navigate to="/" />
+        )
+    }
+/>
       </Routes>
     </BrowserRouter>
   );

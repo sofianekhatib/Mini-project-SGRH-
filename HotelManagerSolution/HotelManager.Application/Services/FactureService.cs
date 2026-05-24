@@ -56,7 +56,6 @@ namespace HotelManager.Application.Services
             };
             await _paiementRepository.AddAsync(paiement);
 
-            // Vérifier si la facture est totalement payée
             var totalPaye = (await _paiementRepository.GetByFactureIdAsync(factureId)).Sum(p => p.Montant);
             if (totalPaye >= facture.MontantTotal)
             {

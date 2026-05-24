@@ -7,12 +7,10 @@ namespace HotelManager.Domain.Entities
     {
         public int Id { get; set; }
         public string Numero { get; set; } = string.Empty;
-        public string Type { get; set; } = string.Empty; // Simple, Double, Suite
+        public string Type { get; set; } = string.Empty; 
         public decimal PrixParNuit { get; set; }
         public StatutChambre Statut { get; set; } = StatutChambre.Disponible;
         public string? Description { get; set; }
-
-        // Navigation
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

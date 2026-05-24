@@ -6,7 +6,7 @@ namespace HotelManager.Domain.Entities
     {
         public int Id { get; set; }
         public string NomUtilisateur { get; set; } = string.Empty;
-        public string MotDePasseHash { get; set; } = string.Empty; // stocké hashé
+        public string MotDePasseHash { get; set; } = string.Empty; 
         public string Email { get; set; } = string.Empty;
         public Role Role { get; set; } = Role.Receptionniste;
     }

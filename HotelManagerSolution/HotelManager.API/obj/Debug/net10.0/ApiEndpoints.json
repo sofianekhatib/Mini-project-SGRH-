@@ -10,6 +10,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HotelManager.API.Controllers.AdminDashboardController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/AdminDashboard/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.AdminDashboardController",
+    "Method": "CreateUser",
+    "RelativePath": "api/AdminDashboard/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HotelManager.API.Controllers.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.AdminDashboardController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/AdminDashboard/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HotelManager.API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -181,7 +223,8 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [],
+    "EndpointName": "GetById"
   },
   {
     "ContainingType": "HotelManager.API.Controllers.ClientController",
@@ -218,6 +261,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ClientController",
+    "Method": "GetClientByEmail",
+    "RelativePath": "api/Client/by-email/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ClientController",
+    "Method": "GetCurrentClient",
+    "RelativePath": "api/Client/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -269,9 +338,51 @@
   },
   {
     "ContainingType": "HotelManager.API.Controllers.FactureController",
+    "Method": "GetByClientId",
+    "RelativePath": "api/Facture/client/{clientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.FactureController",
+    "Method": "GetMyFactures",
+    "RelativePath": "api/Facture/my-factures",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.FactureController",
     "Method": "GetByReservation",
     "RelativePath": "api/Facture/reservation/{reservationId}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reservationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.FactureController",
+    "Method": "GenerateForReservation",
+    "RelativePath": "api/Facture/reservation/{reservationId}",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -343,7 +454,49 @@
   },
   {
     "ContainingType": "HotelManager.API.Controllers.ReservationController",
-    "Method": "GetByClient",
+    "Method": "CheckIn",
+    "RelativePath": "api/Reservation/{id}/checkin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ReservationController",
+    "Method": "CheckOut",
+    "RelativePath": "api/Reservation/{id}/checkout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ReservationController",
+    "Method": "GetActive",
+    "RelativePath": "api/Reservation/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ReservationController",
+    "Method": "GetByClientId",
     "RelativePath": "api/Reservation/client/{clientId}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -355,6 +508,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HotelManager.API.Controllers.ReservationController",
+    "Method": "GetConfirmations",
+    "RelativePath": "api/Reservation/confirmations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

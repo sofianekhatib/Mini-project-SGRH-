@@ -12,5 +12,6 @@ namespace HotelManager.Domain.Interfaces
         Task UpdateAsync(Client client);
         Task DeleteAsync(int id);
         Task<Client?> GetByEmailAsync(string email);
+        Task<Client?> GetByUserIdAsync(int userId);
     }
 }
