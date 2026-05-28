@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { LogOut, Users, Calendar, ClipboardCheck, ClipboardX, FileText } from 'lucide-react';
+import { LogOut, Users, Calendar, ClipboardCheck, ClipboardX, FileText, Hotel } from 'lucide-react';
 
 const ReceptionistDashboard = ({ user, onLogout }) => {
     const navigate = useNavigate();
@@ -33,6 +33,7 @@ const ReceptionistDashboard = ({ user, onLogout }) => {
     };
 
     const menuItems = [
+        { title: 'Gestion des chambres', description: 'Voir et modifier le statut des chambres', icon: Hotel, link: '/GererChambres' },
         { title: 'Gestion des clients', description: 'Ajouter, modifier ou supprimer des clients', icon: Users, link: '/ClientManagement' },
         { title: 'Gestion des réservations', description: 'Voir toutes les réservations, annuler', icon: Calendar, link: '/ReceptionistReservations' },
         { title: 'Check‑in', description: 'Enregistrer l’arrivée d’un client', icon: ClipboardCheck, link: '/CheckIn' },

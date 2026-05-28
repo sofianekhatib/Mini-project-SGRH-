@@ -104,7 +104,7 @@ namespace HotelManager.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        [Authorize(Roles = "Admin,Receptionniste")]
+        [Authorize(Roles = "Admin,Receptionniste,Client")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, ClientDto dto)
         {

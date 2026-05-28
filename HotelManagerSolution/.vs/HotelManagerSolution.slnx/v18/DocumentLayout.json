@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA890FA-FA41-48E9-826F-185115AFDDD9}|HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.infrastructure\\hotelmanager.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EAA890FA-FA41-48E9-826F-185115AFDDD9}|HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj|solutionrelative:hotelmanager.infrastructure\\hotelmanager.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18B8D335-861C-C1A2-3470-6EF8C536AEAC}|HotelManager.Domain\\HotelManager.Domain.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.domain\\hotelmanager.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{18B8D335-861C-C1A2-3470-6EF8C536AEAC}|HotelManager.Domain\\HotelManager.Domain.csproj|solutionrelative:hotelmanager.domain\\hotelmanager.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|c:\\users\\a d m i n\\onedrive\\documents\\desktop\\cd-project\\hotelmanagersolution\\hotelmanager.application\\hotelmanager.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F55D20D6-096D-4B75-8D7B-DD1DB4B6E192}|HotelManager.Application\\HotelManager.Application.csproj|solutionrelative:hotelmanager.application\\hotelmanager.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HotelManager.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj",
+              "RelativeToolTip": "HotelManager.Infrastructure\\HotelManager.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-28T11:29:40.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HotelManager.Domain",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Domain\\HotelManager.Domain.csproj",
+              "RelativeDocumentMoniker": "HotelManager.Domain\\HotelManager.Domain.csproj",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Domain\\HotelManager.Domain.csproj",
+              "RelativeToolTip": "HotelManager.Domain\\HotelManager.Domain.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-28T11:29:11.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HotelManager.Application",
+              "DocumentMoniker": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\HotelManager.Application.csproj",
+              "RelativeDocumentMoniker": "HotelManager.Application\\HotelManager.Application.csproj",
+              "ToolTip": "C:\\Users\\A D M I N\\OneDrive\\Documents\\Desktop\\CD-Project\\HotelManagerSolution\\HotelManager.Application\\HotelManager.Application.csproj",
+              "RelativeToolTip": "HotelManager.Application\\HotelManager.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-28T11:27:32.974Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

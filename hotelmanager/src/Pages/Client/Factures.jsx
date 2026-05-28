@@ -19,50 +19,23 @@ const Factures = () => {
     };
 
     useEffect(() => {
-        const getClientIdFromToken = () => {
-            if (!token) return null;
-            try {
-                const payload = JSON.parse(atob(token.split('.')[1]));
-                return payload.clientId || null;
-            } catch {
-                return null;
-            }
-        };
-
         const fetchFactures = async () => {
             if (!token) {
                 setError('Vous devez être connecté');
                 setLoading(false);
                 return;
             }
-
-            const clientId = getClientIdFromToken();
-            if (!clientId) {
-                setError('Impossible d’identifier votre compte client. Veuillez vous reconnecter.');
-                setLoading(false);
-                return;
-            }
-
             try {
-                // First try the dedicated endpoint (if it exists)
-                let response = await fetch(`https://localhost:7188/api/Facture/client/${clientId}`, {
+                // ✅ Use the dedicated client endpoint (public for any authenticated user)
+                const response = await fetch('https://localhost:7188/api/Facture/my-factures', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-
                 if (!response.ok) {
-                    // Fallback: fetch all factures and filter client-side using reservation.clientId
-                    const allResponse = await fetch('https://localhost:7188/api/Facture', {
-                        headers: { Authorization: `Bearer ${token}` }
-                    });
-                    if (!allResponse.ok) throw new Error('Impossible de charger les factures');
-                    const allFactures = await allResponse.json();
-                    // Filter where the associated reservation belongs to this client
-                    const filtered = allFactures.filter(f => f.reservation?.clientId === clientId);
-                    setFactures(filtered);
-                } else {
-                    const data = await response.json();
-                    setFactures(data);
+                    const text = await response.text();
+                    throw new Error(text || 'Impossible de charger vos factures');
                 }
+                const data = await response.json();
+                setFactures(data);
             } catch (err) {
                 setError(err.message);
             } finally {

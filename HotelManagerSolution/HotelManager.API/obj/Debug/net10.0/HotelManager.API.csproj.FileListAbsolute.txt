@@ -163,10 +163,10 @@ C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\Ho
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelMan.CD1F77F7.Up2Date
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.dll
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\refint\HotelManager.API.dll
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.pdb
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\HotelManager.API.genruntimeconfig.cache
 C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\ref\HotelManager.API.dll
+C:\Users\A D M I N\OneDrive\Documents\Desktop\CD-Project\HotelManagerSolution\HotelManager.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

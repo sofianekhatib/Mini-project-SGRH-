@@ -89,6 +89,28 @@ namespace HotelManager.API.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        [HttpPut("users/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDto dto)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null) return NotFound();
+
+            user.NomUtilisateur = dto.NomUtilisateur;
+            user.Email = dto.Email;
+
+            if (!string.IsNullOrWhiteSpace(dto.MotDePasse))
+            {
+                user.MotDePasseHash = BCrypt.Net.BCrypt.HashPassword(dto.MotDePasse);
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto.Role) && Enum.TryParse<Role>(dto.Role, true, out var role))
+            {
+                user.Role = role;
+            }
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 
     public class CreateUserDto
@@ -97,5 +119,12 @@ namespace HotelManager.API.Controllers
         public string Email { get; set; }
         public string MotDePasse { get; set; }
         public string Role { get; set; }  
+    }
+    public class UpdateUserDto
+    {
+        public string NomUtilisateur { get; set; }
+        public string Email { get; set; }
+        public string MotDePasse { get; set; } 
+        public string Role { get; set; }
     }
 }

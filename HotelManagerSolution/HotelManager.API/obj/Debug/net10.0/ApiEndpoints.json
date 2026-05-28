@@ -52,6 +52,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HotelManager.API.Controllers.AdminDashboardController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/AdminDashboard/users/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "HotelManager.API.Controllers.UpdateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HotelManager.API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",

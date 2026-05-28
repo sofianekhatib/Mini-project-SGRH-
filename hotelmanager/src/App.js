@@ -21,11 +21,10 @@ import ClientManagement from './Pages/Receptionist/ClientManagement'
 import GenerateInvoice from './Pages/Receptionist/GenerateInvoice'
 import ReceptionistDashboard from './Pages/Receptionist/ReceptionistDashboard'
 import ReceptionistReservations from './Pages/Receptionist/ReceptionistReservations'
-
+import GererChambres from './Pages/Receptionist/GererChambres'
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
@@ -35,7 +34,6 @@ function App() {
     }
     setLoading(false);
   }, []);
-
   const handleLogin = (token, role) => {
     const payload = JSON.parse(atob(token.split('.')[1]));
     const username = payload.unique_name || payload.name || payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
@@ -44,16 +42,13 @@ function App() {
     localStorage.setItem('username', username);
     setUser({ username, role });
   };
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('username');
     setUser(null);
   };
-
   if (loading) return <div className="flex justify-center items-center h-screen">Chargement...</div>;
-
   return (
     <BrowserRouter>
       <Routes>
@@ -86,7 +81,7 @@ function App() {
         <Route path="/GenerateInvoice" element={<GenerateInvoice />} />
         <Route path="/ReceptionistDashboard" element={<ReceptionistDashboard />} />
         <Route path="/ReceptionistReservations" element={<ReceptionistReservations />} />
-
+        <Route path="/GererChambres" element={<GererChambres />} />
         <Route
           path="/admin"
           element={

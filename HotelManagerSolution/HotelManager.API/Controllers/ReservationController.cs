@@ -42,7 +42,7 @@ namespace HotelManager.API.Controllers
             return Ok(res);
         }
 
-        [Authorize(Roles = "Admin,Receptionniste")]
+        [Authorize(Roles = "Admin,Receptionniste,Client")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateReservationDto dto)
         {
@@ -50,7 +50,7 @@ namespace HotelManager.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        [Authorize(Roles = "Admin,Receptionniste")]
+        [Authorize(Roles = "Admin,Receptionniste,Client")]
         [HttpPut("{id}/cancel")]
         public async Task<IActionResult> Cancel(int id)
         {
@@ -136,7 +136,6 @@ namespace HotelManager.API.Controllers
 
             reservation.Statut = StatutReservation.Terminee;
 
-            // Generate final invoice if none exists
             if (reservation.Facture == null)
             {
                 var nbNuits = (reservation.DateFin - reservation.DateDebut).Days;
